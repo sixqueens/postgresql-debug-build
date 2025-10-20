@@ -1,0 +1,17 @@
+# Output directory
+output/*
+!output/.gitkeep
+
+# Docker volumes
+.docker/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS specific
+.DS_Store
+Thumbs.db

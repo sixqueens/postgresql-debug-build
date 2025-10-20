@@ -1,0 +1,17 @@
+services:
+  postgres-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: postgres-compile
+    volumes:
+      - ./output:/output
+      - ./scripts:/usr/src/scripts
+    working_dir: /usr/src/postgresql-16.1
+    tty: true
+    stdin_open: true
+    command: /bin/bash
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
