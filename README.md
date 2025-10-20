@@ -91,6 +91,55 @@ dnf install -y procps-ng util-linux shadow-utils which less vim gdb
 (gdb) set args -D /usr/local/pgsql/data
 ```
 
+## Git ワークフロー（複数端末での作業）
+
+### 他の端末で変更を加える場合
+
+```bash
+# 1. 最新版を取得
+git pull origin main
+
+# 2. 変更を加える
+# ファイル編集...
+
+# 3. 変更をコミット・プッシュ
+git add .
+git commit -m "変更内容の説明"
+git push origin main
+```
+
+### この端末で変更を反映する場合
+
+```bash
+# 1. 作業前に最新版を取得
+git pull origin main
+
+# 2. 変更を加える
+# ファイル編集...
+
+# 3. 変更をコミット・プッシュ
+git add .
+git commit -m "変更内容の説明"
+git push origin main
+```
+
+### 競合が発生した場合
+
+```bash
+# 1. 最新版を取得（競合発生）
+git pull origin main
+
+# 2. 競合ファイルを手動で編集
+# <<<<<<< HEAD と >>>>>>> の間を修正
+
+# 3. 競合解決後にコミット
+git add .
+git commit -m "Merge conflict resolved"
+git push origin main
+```
+
+**重要**: 作業開始時は必ず `git pull` で最新版を取得してください。
+
 ---
 
 **成果**: PostgreSQL認証処理のソースレベル解析が可能な完全デバッグ環境
